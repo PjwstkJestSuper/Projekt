@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dodaj studenta</title>
-    <link rel="stylesheet" th:href="@{/styles.css}">
+    <link rel="stylesheet" th:href="@{/templates/styles.css}">
 </head>
 <body>
 <!--używając standardowych znaczników html definiujemy metodę z jaką zostanie wywołane żądanie przy zatwierdzaniu formularza, metoda ta musi odpowiadać tej zdefiniowanej w kontrolerze
@@ -13,32 +13,28 @@
 <form method="POST" th:action="@{/students-page}" th:object="${student}">
     <label>
         Name
-<!--        znacznik th:field pozwala nam pobrać wartość z tego inputu do pola name, zapis *{} jest odniesieniem do obiektu studenta zdefiniowanego w formularzu przez th:object-->
         <input id="name-input" required type="text" th:field="*{name}"/>
     </label><hr>
-    <label> <!-- todo dodane kierunki i punkty ECTS-->
-        Kierunek
-        <select id="kierunek-input" name="kierunek" th:field="*{kierunek}">
-            <option th:each="kierunek : ${T(com.example.monday.data.Kierunek).values()}"
-                    th:value="${kierunek}" th:text="${kierunek}">
+    <label>
+        Tryb
+        <select id="Tryb-input" name="Tryb" th:field="*{Tryb}">
+            <option th:each="Tryb : ${T(com.example.monday.data.Tryb).values()}"
+                    th:value="${Tryb}" th:text="${Tryb}">
             </option>
-        </select>
+      R  </select>
     </label><hr>
     <label>
         Unit
         <select id="unit-input" name="unit" th:field="*{unit}">
-<!--            w znaczniku th:each pojawia się SpeL(Spring expression language), który pozwala nam odwołać się do klasy w naszym projekcie i wywołać na niej metodę values()-->
             <option th:each="studentUnit : ${T(com.example.monday.data.StudentUnit).values()}"
                     th:value="${studentUnit}" th:text="${studentUnit}">
-<!--        w przypadku option mamy znacznik th:value, który odpowiada nam za przypisanie wartości do pola
- wartość ta będzie przekazana do naszego th:field po wybraniu opcji przez użytkownika -->
 
             </option>
         </select>
     </label><hr>
     <label>
-        Punkty ECTS
-        <input id="ects-input" required type="number" th:field="*{ects}"/>
+        ErasmusStatus
+        <input id="ErasmusStatus-input" required type="number" th:field="*{ErasmusStatus}"/>
     </label><hr>
     <button type="submit">Dodaj</button>
 </form>

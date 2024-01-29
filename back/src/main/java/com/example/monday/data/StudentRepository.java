@@ -29,14 +29,13 @@ public interface StudentRepository extends CrudRepository<Student, UUID> {
     //@Query("from Student")
     List<Student> findAll();
 
-    //@Query("select s from Student s where s.kierunek = 'GDANSK'")
-    List<Student> getStudentsByKierunek(Kierunek kierunek);
-
-    List<Student> getStudentsByEcts(Long ects);
+    List<Student> getStudentsByErasmusStatus(Boolean ErasmusStatus);
 
     Student getStudentByIndex(Long index);
 
     default List<Student> getFromGdanskByName(String name) {
         return getByNameAndUnit(name, StudentUnit.GDANSK);
     }
+
+    Student getStudentsByTryb(Tryb tryb);
 }

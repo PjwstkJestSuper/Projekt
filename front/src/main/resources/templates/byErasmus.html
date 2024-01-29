@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyszukaj po Statusie Erazmusa</title>
+    <link rel="stylesheet" th:href="@{/templates/styles.css}">
+</head>
+<body>
+<p data-test="hello-message" th:text="'Szukaj po Statusie Erasmusa'"></p>
+<form method="POST" th:action="@{/students-page/byErasmusStatus}">
+    <label>
+        Erasmus Status
+        <br>
+        True
+        <input id="ErasmusStatus-inputT" required type="radio" name="ErasmusStatus"/>
+        False
+        <input id="ErasmusStatus-inputF" required type="radio" name="ErasmusStatus"/>
+    </label><hr>
+    <button type="submit">Search</button>
+</form>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Imie</th>
+        <th>Oddział</th>
+        <th>Tryb</th>
+        <th>ErasmusStatus</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${studenciErasmusStatus}">
+        <td th:text="${student.index}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.unit}"></td>
+        <td th:text="${student.Tryb}"></td>
+        <td th:text="${student.ErasmusStatus}"></td>
+    </tr>
+    </tbody>
+</table><hr>
+<a th:href="@{/students-page}">Powrót na strone główną</a>
+<footer th:insert="footer.html"></footer>
+</body>
+</html>

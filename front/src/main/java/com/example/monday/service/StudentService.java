@@ -1,6 +1,6 @@
 package com.example.monday.service;
 
-import com.example.monday.data.Kierunek;
+import com.example.monday.data.Tryb;
 import com.example.monday.excetionhandler.RecordNotFoundException;
 import com.example.monday.resource.CreateStudent;
 import com.example.monday.resource.StudentDto;
@@ -124,9 +124,9 @@ public class StudentService {
         }
     }
 
-    public List<StudentDto> getStudentsByKierunek(Kierunek kierunek) {
+    public List<StudentDto> getStudentsByTryb(Tryb Tryb) {
         try {
-            return restTemplate.exchange(API_URL + "/byKierunek?kierunek=" + kierunek,
+            return restTemplate.exchange(API_URL + "/byTryb?Tryb=" + Tryb,
                             HttpMethod.GET, null, new ParameterizedTypeReference<List<StudentDto>>() {
                             })
                     .getBody();
@@ -137,9 +137,9 @@ public class StudentService {
         }
     }
 
-    public List<StudentDto> getStudentsByECTS(Integer ects) {
+    public List<StudentDto> getStudentsByErasmusStatus(Boolean ErasmusStatus) {
         try {
-            return restTemplate.exchange(API_URL + "/byEcts?ects=" + ects,
+            return restTemplate.exchange(API_URL + "/byErasmusStatus?ErasmusStatus=" + ErasmusStatus,
                             HttpMethod.GET, null, new ParameterizedTypeReference<List<StudentDto>>() {
                             })
                     .getBody();
@@ -152,12 +152,6 @@ public class StudentService {
 
     public void updateStudent(StudentDto studentDto) {
         try {
-//             restTemplate.exchange(API_URL + "/editStudent?studentDto=" + studentDto,
-//                            HttpMethod.GET, null, new ParameterizedTypeReference<StudentDto>() {
-//                            })
-//                    .getBody();
-
-            // Utworzenie obiektu HttpEntity z obiektem studentDto
             HttpEntity<StudentDto> requestEntity = new HttpEntity<>(studentDto);
 
             restTemplate.exchange(API_URL + "/editStudent", HttpMethod.PUT, requestEntity,

@@ -16,8 +16,8 @@ public class JpaRepositoryTest {
     @BeforeEach
         // uzupełniamy dane w bazie
     void setUp() {
-        var student1 = new Student("Jakub", StudentUnit.GDANSK, 5L, Kierunek.Informatyka, 0L);
-        var student2 = new Student("Zygfryd", StudentUnit.WARSZAWA, 15L, Kierunek.Grafika, 4L);
+        var student1 = new Student("Jakub", StudentUnit.GDANSK, 5L, Tryb.Staconajrny, true);
+        var student2 = new Student("Zygfryd", StudentUnit.WARSZAWA, 15L, Tryb.Niestacjonarny, false);
         studentRepository.save(student1);
         studentRepository.save(student2);
     }
@@ -30,9 +30,9 @@ public class JpaRepositoryTest {
     }
 
     @Test
-    void givenEctsNumber_areStudentsInList(){
-        var ectsStudentList = studentRepository.getStudentsByEcts(4L);
-        assertTrue(ectsStudentList.contains(studentRepository.getStudentByIndex(15L)));
+    void givenErasmusStatusNumber_areStudentsInList(){
+        var ErasmusStatusStudentList = studentRepository.getStudentsByErasmusStatus(true);
+        assertTrue(ErasmusStatusStudentList.contains(studentRepository.getStudentByIndex(15L)));
     }
 
 }

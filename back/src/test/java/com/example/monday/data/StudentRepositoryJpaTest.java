@@ -16,8 +16,8 @@
 //
 //    @BeforeEach // uzupełniamy dane w bazie
 //    void setUp() {
-//        var student1 = new Student("Karola", StudentUnit.GDANSK, 13L);
-//        var student2 = new Student("Aga", StudentUnit.WARSZAWA, 20L);
+//        var student1 = new Student("Karola", StudentUnit.GDANSK,Tryb.Staconajrny,true);
+//        var student2 = new Student("Aga", StudentUnit.WARSZAWA,Tryb.Niestacjonarny,false);
 //        studentRepository.save(student1);
 //        studentRepository.save(student2);
 //    }

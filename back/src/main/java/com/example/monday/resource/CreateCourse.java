@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateStudent {
+public class CreateCourse {
     @NotBlank
     private String name;
 
@@ -21,8 +21,8 @@ public class CreateStudent {
     private StudentUnit unit;
 
     @NotNull
-    private Tryb Tryb;
+    private String subject;
 
     @NotNull
-    private Boolean ErasmusStatus;
+    private int minMean;
 }

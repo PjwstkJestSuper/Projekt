@@ -1,6 +1,6 @@
 package com.example.monday.service;
 
-import com.example.monday.data.Kierunek;
+import com.example.monday.data.Tryb;
 import com.example.monday.data.Student;
 import com.example.monday.data.StudentRepository;
 import com.example.monday.data.StudentUnit;
@@ -15,10 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-// Tu korzystamy już z Dependency Injection realizowanego przez konstruktor
-// Pozwalamy, aby to Spring utworzył dla nas i wstrzykął StudentRepository do tej klasy
-// podając to jako parametr konstruktora. Dopuszcza się też wstrzyknięcie Beana przez setter z adnotacją @Autowired
-// Zamiast konstruktora używamy adnotacji z pakietu Lombok - dzięki temu jeśli dodamy tu inny Bean nie musimy już nic robić - konstruktor zaktualizuje nam lombok.
 @Service
 @RequiredArgsConstructor
 public class StudentService {
@@ -65,22 +61,22 @@ public class StudentService {
                 .toList();
     }
 
-    public List<StudentDto> getAll() {  //odwołujemy się do Student
+    public List<StudentDto> getAll() {
         return studentRepository.findAll()
                 .stream()
                 .map(studentMapper::toDto)
                 .toList();
     }
 
-    public List<StudentDto> getStudentsByKierunek(Kierunek kierunek) {
-        return studentRepository.getStudentsByKierunek(kierunek)
+    public List<StudentDto> getStudentsByTryb(Tryb Tryb) {
+        return studentRepository.getStudentsByTryb(Tryb)
                 .stream()
                 .map(studentMapper::toDto)
                 .toList();
     }
 
-    public List<StudentDto> getStudentsByEcts(Long ects) {
-        return studentRepository.getStudentsByEcts(ects)
+    public List<StudentDto> getStudentsByErasmusStatus(Boolean ErasmusStatus) {
+        return studentRepository.getStudentsByErasmusStatus(ErasmusStatus)
                 .stream()
                 .map(studentMapper::toDto)
                 .toList();
@@ -102,8 +98,8 @@ public class StudentService {
 
             student.setName(studentDto.name());
             student.setUnit(studentDto.unit());
-            student.setKierunek(studentDto.kierunek());
-            student.setEcts(studentDto.ects());
+            student.setTryb(studentDto.Tryb());
+            student.setErasmusStatus(studentDto.ErasmusStatus());
 
             student = studentRepository.save(student);
 

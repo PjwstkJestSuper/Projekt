@@ -12,29 +12,32 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Student {
 
-    public Student(String name, StudentUnit unit, Kierunek kierunek, Long ects) {
+    public Student(String name, StudentUnit unit, Tryb tryb, Boolean erasmusStatus) {
         this.name = name;
         this.unit = unit;
-        this.kierunek = kierunek;
-        this.ects = ects;
+        this.tryb = tryb;
+        this.erasmusStatus = erasmusStatus;
+        //this.course = course;
     }
-    public Student(String name, StudentUnit unit, Long index, Kierunek kierunek, Long ects) {
+    public Student(String name, StudentUnit unit, Long index, Tryb tryb, Boolean ErasmusStatus) {
         this.name = name;
         this.unit = unit;
         this.index = index;
-        this.kierunek = kierunek;
-        this.ects = ects;
+        this.tryb = tryb;
+        this.erasmusStatus = ErasmusStatus;
+        //this.course = course;
     }
 
     @Id
     @GeneratedValue
     private UUID id;
     private String name;
-    private Long ects;
+    private Boolean erasmusStatus;
     @Enumerated(EnumType.STRING)
     private StudentUnit unit;
     @Enumerated(EnumType.STRING)
-    private Kierunek kierunek;
+    private Tryb tryb;
+    @Enumerated(EnumType.STRING)
     @Setter
     private Long index;
 

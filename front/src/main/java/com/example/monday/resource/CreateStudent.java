@@ -1,6 +1,6 @@
 package com.example.monday.resource;
 
-import com.example.monday.data.Kierunek;
+import com.example.monday.data.Tryb;
 import com.example.monday.data.StudentUnit;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -21,8 +21,8 @@ public class CreateStudent {
     private StudentUnit unit;
 
     @NotNull
-    private Kierunek kierunek;
+    private Tryb Tryb;
 
     @NotNull
-    private Integer ects;
+    private Boolean ErasmusStatus;
 }
