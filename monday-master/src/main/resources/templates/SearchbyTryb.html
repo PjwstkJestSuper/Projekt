@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyszukaj po Trybie</title>
+    <link rel="stylesheet" th:href="@{/templates/styles.css}">
+</head>
+<body>
+<p data-test="hello-message" th:text="'Tryb'"></p>
+<br>
+<form method="POST" th:action="@{/students-page/byTryb}">
+<label>
+    Tryb
+    <select id="Tryb-input" type="text" name="Tryb">
+        <option th:each="TrybEnum : ${T(com.example.monday.data.Tryb).values()}"
+                th:value="${TrybEnum}" th:text="${TrybEnum}">
+        </option>
+    </select>
+</label><hr>
+    <button type="submit">Szukaj</button>
+</form>
+<hr>
+<table>
+    <thead>
+    <tr>
+        <th>Index</th>
+        <th>Imie</th>
+        <th>Oddział</th>
+        <th>Tryb</th>
+        <th>ErasmusStatus</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="student : ${studenciTryb}">
+        <td th:text="${student.index}"></td>
+        <td th:text="${student.name}"></td>
+        <td th:text="${student.unit}"></td>
+        <td th:text="${student.Tryb}"></td>
+        <td th:text="${student.ErasmusStatus}"></td>
+    </tr>
+    </tbody>
+</table><hr>
+<a th:href="@{/students-page}">Powrót</a>
+<footer th:insert="footer.html"></footer>
+</body>
+</html>

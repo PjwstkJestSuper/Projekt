@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj Dane Studenta</title>
+    <link rel="stylesheet" th:href="@{/templates/styles.css}">
+</head>
+<body>
+<form method="POST" th:action="@{/students-page/editStudent}" th:object="${studentData}">
+    <input type="hidden" th:field="*{id}" />
+
+    <input id="index" type="hidden" th:field="*{index}"/>
+
+    <label for="name">Imię:</label>
+    <input id="name" th:field="*{name}" type="text" />
+    Placówka:
+    <select id="unit-input" name="unit" th:field="*{unit}">
+        <option th:each="unit : ${T(com.example.monday.data.StudentUnit).values()}"
+                th:value="${unit}" th:text="${unit}">
+        </option>
+    </select>
+    Tryb Nauczania:
+    <select id="Tryb-input" name="Tryb" th:field="*{Tryb}">
+        <option th:each="Tryb : ${T(com.example.monday.data.Tryb).values()}"
+                th:value="${Tryb}" th:text="${Tryb}">
+        </option>
+    </select>
+    ErasmusStatus:
+    <label>
+        True
+        <input id="ErasmusStatus-inputT" required type="radio" name="ErasmusStatus"/>
+        False
+        <input id="ErasmusStatus-inputF" required type="radio" name="ErasmusStatus"/>
+    </label><hr>
+    <button type="submit">Update</button>
+</form>
+</body>
+</html>
